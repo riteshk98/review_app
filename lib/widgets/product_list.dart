@@ -16,9 +16,19 @@ class ProductList extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Card(
                     elevation: 7,
-                    child: ListTile(
-                      leading: Text(snapshot.data[index].title),
-                      trailing: Text(snapshot.data[index].rating.toString()),
+                    child: GestureDetector(
+                      onTap: () => Navigator.of(context)
+                          .pushNamed('/details', arguments: {
+                        'id': snapshot.data[index].id,
+                        'title': snapshot.data[index].title,
+                        'description': snapshot.data[index].description,
+                        'rating': snapshot.data[index].rating,
+                        'totalUsers': snapshot.data[index].totalUsers,
+                      }),
+                      child: ListTile(
+                        leading: Text(snapshot.data[index].title),
+                        trailing: Text(snapshot.data[index].rating.toStringAsFixed(2)),
+                      ),
                     ));
               },
             );
