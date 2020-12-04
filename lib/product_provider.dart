@@ -22,7 +22,7 @@ class ProductProvider with ChangeNotifier {
     return _firestore
         .collection('products')
         .doc(id.trim())
-        .update({'rating': finalRating,'users' : users+1});
+        .update({'rating': finalRating,'totalUsers' : users+1});
 
   }
 
